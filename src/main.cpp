@@ -1,6 +1,6 @@
 /*
-  I2C LCD Demo by Everything2067.
-  A program to present a demo for your I2C LCD.
+  LCD_I2C by Everything2067.
+  Presents a demo for your I2C LCD.
   You may also use this to test the LCD as well.
   This program will count a variable and display it on the LCD, blinking the backlight too.
   Make sure the backlight jumper is in place and the constrast setting is set properly.
