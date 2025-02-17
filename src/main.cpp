@@ -6,7 +6,7 @@
   Make sure the backlight jumper is in place and the constrast setting is set properly.
 */
 
-// Definitions for columns and rows
+// Definitions for columns and rows. You can change this as per your need.
 #define COLUMNS 16
 #define ROWS    2
 
@@ -21,7 +21,6 @@
 // #define ADDRESS 0x23
 // #define ADDRESS 0x22
 // #define ADDRESS 0x21
-
 // #define ADDRESS 0x20
 
 // NXP PCF8574
@@ -34,12 +33,11 @@
 // #define ADDRESS 0x39
 // #define ADDRESS 0x38
 
-// Including required libraries.
+// Including required libraries
 #include <Arduino.h>
-#include <stdint.h>
 #include <LiquidCrystal_I2C.h>
 
-// Custom character.
+// Custom character ✅
 uint8_t Check[8] =
 {
 0b00000,
@@ -52,17 +50,19 @@ uint8_t Check[8] =
 0b00000
 };
 
-// Variable for counting.
+// Variable for counting
 int count;
 
 // Creating LCD Object
-LiquidCrystal_I2C lcd(ADDRESS, 16, 9);
+LiquidCrystal_I2C lcd(ADDRESS, COLUMNS, ROWS);
 
 void setup() {
+  // Initialise LCD
   lcd.init();
   lcd.clear();
   lcd.createChar(0, Check);
 
+  // Print the first line
   lcd.setCursor(0, 0);
   lcd.print("Hello! Testing ");
   lcd.write(0);
@@ -71,12 +71,14 @@ void setup() {
 }
 
 void loop() {
+  // Keep on printing the count
   lcd.setCursor(0, 1);
   lcd.backlight();
   lcd.print(count);
   count++;
   delay(1000);
 
+  // Repeat to turn off backlight
   lcd.setCursor(0, 1);
   lcd.noBacklight();
   lcd.print(count);
